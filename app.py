@@ -22,7 +22,7 @@ merchant_key = os.getenv('key', config('key'))
 merchant_salt_v1 = os.getenv('salt', config('salt'))
 gmail_user = os.getenv('gmail_user', config('gmail_user'))
 gmail_pass = os.getenv('gmail_pass', config('gmail_pass'))
-print(merchant_key)
+
 
 
 # database connection
@@ -195,7 +195,6 @@ def verify_resp_hash(data: dict):
     resp_hash = data['hash']
 
     # now we will compare received hash with our data or our calculated hash to verify payment 
-    
 
     try:
         # retrive data for perticular txnid from database
@@ -284,6 +283,7 @@ def invoice_gen(firstname, lastname, email, address1, state, country, amount, da
         status=status,
         txnid=txnid
     )
+    print('rec',email)
     
     sendmail(html_temp, receiver = email)
 
@@ -298,10 +298,13 @@ def sendmail(html:str, receiver:str):
 
     msg.attach(MIMEText(html, 'html'))
 
-    s = smtplib.SMTP_SSL(host='smtp.gmail.com', port=465)
-    s.login(user=gmail_user, password=gmail_pass)
-    s.sendmail(sender, receiver, msg.as_string())
-    s.quit()
+    try:
+        s = smtplib.SMTP_SSL(host='smtp.gmail.com', port=465)
+        s.login(user=gmail_user, password=gmail_pass)
+        s.sendmail(sender, receiver, msg.as_string())
+        s.quit()
+    except Exception as exp:
+        print('Error',exp)
 
 
 # Start point of program
