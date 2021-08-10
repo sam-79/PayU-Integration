@@ -137,7 +137,6 @@ def success():
 
     data = request.values.to_dict(flat=True)
 
-    print(data)
     # verify response hash
     res = verify_resp_hash(data)
 
@@ -243,7 +242,7 @@ def add_db_row(txnid, amount, firstname, email, status='pending', ref_id='null')
         return 'done'
 
     except Exception as exp:
-        print(exp)
+        
         return exp
 
 
@@ -294,8 +293,8 @@ def sendmail(html:str, receiver:str):
         sg = SendGridAPIClient(os.getenv('sendmail_key',config('sendmail_key')))
         response = sg.send(message)
 
-    except Exception as e:
-        print(e.message)
+    except Exception as exp:
+        print(exp.message)
 
 
 # Start point of program
