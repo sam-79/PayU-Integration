@@ -8,5 +8,8 @@ Jinja2==3.0.1
 MarkupSafe==2.0.1
 pycodestyle==2.7.0
 python-decouple==3.4
+python-http-client==3.3.2
+sendgrid==6.7.1
+starkbank-ecdsa==1.1.1
 toml==0.10.2
 Werkzeug==2.0.1
