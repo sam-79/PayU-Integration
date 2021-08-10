@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Fail</title>
+
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename = 'css/style.css')}}" media="all" />
+    
+
+</head>
+
+<body>
+    <section class="trans-details" style="background-image: linear-gradient( 
+        129deg
+        , #1f71c3d1 25%, #934cd4d1 75% );">
+        <div class="heading">
+            Transaction Fail
+        </div>
+        <div class="trans-info">
+            <h4>Your transaction status is {{ status }}</h4>
+            <h4>Your transaction ID for this transaction is {{ txnid }}</h4>
+
+        </div>
+
+        <div>
+            <a href="/">
+                <button class="home-btn">
+                    Home
+                </button>
+            </a>
+        </div>
+
+    </section>
+</body>
+
+</html>

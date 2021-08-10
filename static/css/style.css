@@ -1,0 +1,147 @@
+a {
+  text-decoration: none;
+}
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  background-image: linear-gradient(
+    129deg,
+    #934cd4 27%,
+    #ffffff 19%,
+    #ffffff 70%,
+    #1f71c3 63%
+  );
+}
+.trans-details,
+#user-details,
+#confirm-details {
+  background-color: #ffffffab;
+  box-shadow: 0px 0px 30px #272626;
+  padding: 1%;
+  border-radius: 20px;
+  margin: auto;
+  width: 70%;
+  right: 50%;
+  bottom: 50%;
+  transform: translate(50%, 50%);
+  position: absolute;
+  background-image: linear-gradient(
+    129deg,
+    #934cd4d1 27%,
+    #ffffff 19%,
+    #ffffff 70%,
+    #1f71c3d1 63%
+  );
+}
+
+.heading {
+  font-size: xxx-large;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  margin: 5px;
+}
+
+table {
+  margin: auto;
+  padding: 10px;
+  width: 80%;
+}
+
+label {
+  font-size: x-large;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="number"] {
+  font-size: x-large;
+  display: block;
+  width: 90%;
+  height: 2em;
+  align-self: center;
+  background-color: rgb(255, 255, 255);
+  border-radius: 5px;
+  transition: 0.5s;
+  margin: 3% 0% 3% 0%;
+  cursor: pointer;
+}
+
+.submit-btn {
+  display: block;
+  font-size: xx-large;
+  height: fit-content;
+  width: 40%;
+  padding: 10px;
+  margin: auto;
+  background-color: #bcc7c1;
+  border-radius: 50px;
+  border: 2px solid rgb(5, 78, 114);
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+.submit-btn:hover {
+  width: 50%;
+  letter-spacing: 1px;
+  transition: 0.5s;
+  background-color: #808281;
+  color: #ffffffd9;
+}
+
+.home-btn,
+.donate-btn {
+  display: block;
+  font-size: x-large;
+  height: fit-content;
+  width: 100px;
+  padding: 10px;
+  margin: auto;
+  background-color: #c4a9ff;
+  border-radius: 10px;
+  border: 2px solid rgb(108 94 247);
+  transition: 0.5s;
+  cursor: pointer;
+}
+.home-btn:hover,
+.donate-btn:hover {
+  width: 20%;
+  letter-spacing: 1px;
+  transition: 0.5s;
+  background-color: #7a44f1;
+  color: #ffffff;
+}
+
+input[type="submit"] {
+  display: block;
+  font-size: xx-large;
+  height: fit-content;
+  width: 130px;
+  padding: 10px;
+  margin-left: auto;
+  margin-right: 0;
+  background-color: #c5baf5;
+  border-radius: 30px;
+  border: 2px solid rgb(5, 78, 114);
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+input[type="submit"]:hover {
+  width: 200px;
+  transition: 0.5s;
+  background-color: #1d5792;
+  color: #ffffffd9;
+  border: solid 1px white;
+}
+
+.edit-btn {
+  display: inline-block;
+  margin-left: auto;
+  margin-right: 0;
+  cursor: pointer;
+  background-color: #ffffffa3;
+  border: solid 1px black;
+  font-size: medium;
+}

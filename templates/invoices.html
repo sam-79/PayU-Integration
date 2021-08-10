@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoice</title>
+
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            background-image: linear-gradient(129deg,
+                    #934cd4 27%,
+                    #ffffff 19%,
+                    #ffffff 70%,
+                    #1f71c3 63%);
+        }
+
+        .trans-details {
+            background-color: #ffffffab;
+            box-shadow: 0px 0px 30px #272626;
+            padding: 1%;
+            border-radius: 20px;
+            margin: auto;
+            width: 70%;
+            right: 50%;
+            bottom: 50%;
+            transform: translate(50%, 50%);
+            position: absolute;
+            background-image: linear-gradient(129deg,
+                    #934cd4d1 27%,
+                    #ffffff 19%,
+                    #ffffff 70%,
+                    #1f71c3d1 63%);
+        }
+
+        a {
+            text-decoration: none;
+        }
+        *{
+            color: aliceblue;
+        }
+    </style>
+
+</head>
+
+<body>
+    <section class="trans-details" style="background-image: linear-gradient( 
+        129deg
+        , #1f71c3d1 25%, #934cd4d1 75% );">
+        <div class="heading" style="font-size: xxx-large;margin: 5px;">
+            Payment Invoice
+        </div>
+        <div class="trans-info">
+            <h2>User Details</h2>
+            <h4>Name: {{ firstname }} {{ lastname }}</h4>
+            <h4>Email: {{ email }}</h4>
+            <h4>Address: {{address1}}</h4>
+            <h4>State: {{state}}</h4>
+            <h4>Country: {{country}}</h4>
+
+            <hr width="80%" style="float: left;">
+
+            <br>
+            <h2>Transaction Details</h2>
+            <h4>Transaction Amount: Rs {{amount}}</h4>
+            <h4>Transaction Date: {{date}}</h4>
+            <h4>Transaction status: {{ status }}</h4>
+            <h4>Transaction ID: {{ txnid }}</h4>
+
+        </div>
+
+    </section>
+</body>
+
+</html>

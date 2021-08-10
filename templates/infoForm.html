@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename = 'css/style.css')}}" media="all" />
+    
+</head>
+
+<body>
+    <section id="user-details">
+        <div class="heading">
+            Details for Donation
+        </div>
+        <table>
+            <tr>
+                <td>
+                    <label for="firstname">First Name</label>
+                </td>
+                <td>
+                    <input type="text" name="firstname" id="firstname" />
+                </td>
+
+                <td>
+                    <label for="lastname">Last Name</label>
+                </td>
+                <td>
+                    <input type="text" name="lastname" id="lastname" />
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <label for="email">Email</label>
+                </td>
+                <td colspan="3">
+                    <input type="email" name="email" id="email" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="phone">Phone</label>
+                </td>
+                <td>
+                    <input type="number" name="phone" id="phone" pattern="^[7-9]\d{9}$" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="amount">Amount</label>
+                </td>
+                <td>
+                    <input type="number" name="amount" id="amount" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="Address">Address</label>
+                </td>
+                <td colspan="3">
+                    <input type="text" name="address1" id="address1" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="City">City</label>
+                </td>
+                <td>
+                    <input type="text" name="city" id="city" />
+                </td>
+                <td>
+                    <label for="state">State</label>
+                </td>
+                <td>
+                    <input type="text" name="state" id="state" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="zipcode">Zipcode</label>
+                </td>
+                <td>
+                    <input type="text" name="zipcode" id="zipcode" />
+                </td>
+                <td>
+                    <label for="country">Country</label>
+                </td>
+                <td>
+                    <input type="text" name="country" id="country" />
+                </td>
+            </tr>
+        </table>
+        <button onclick="sendDetails();" class="submit-btn">Submit</button>
+    </section>
+
+    <!-- Loading image -->
+    <img src="loading.gif" alt="loading" id="loading_circle" style="display: none;">
+
+
+    <!-- HTML form for PayU API call -->
+    <section id="confirm-details" style="display: none;    background-image: linear-gradient( 
+        308deg
+        , #934cd4d1 27%, #ffffff 19%, #ffffff 70%, #1f71c3d1 63% );">
+        <span>
+            <button class="edit-btn" onclick="enable_edit();">
+                Edit
+            </button>
+        </span>
+        <form method="post" action="https://test.payu.in/_payment" name="confim_form" id="confirm-form">
+
+            <div class="heading">
+                Confirm your details
+            </div>
+
+
+
+            <input type="hidden" name="key" id="merchant_key_C" />
+
+            <input type="hidden" name="txnid" id="txnid_C" />
+            <input type="hidden" name="hash" id="hash_C" />
+
+            <input type="hidden" name="productinfo" id="productinfo_C" />
+
+            <input type="hidden" name="surl" id="surl_C" />
+            <input type="hidden" name="furl" id="furl_C" />
+
+            <table>
+                <tr>
+                    <td><label for="firstname">First Name</label></td>
+                    <td>
+                        <input type="text" name="firstname" id="firstname_C" readonly />
+                    </td>
+
+                    <td><label for="lastname">Last Name</label></td>
+                    <td>
+                        <input type="text" name="lastname" id="lastname_C" readonly />
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <label for="email">Email</label>
+                    </td>
+                    <td colspan="3">
+                        <input type="email" name="email" id="email_C" readonly />
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="phone">Phone</label></td>
+                    <td>
+                        <input type="text" name="phone" id="phone_C" readonly />
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="amount">Amount</label></td>
+                    <td>
+                        <input type="number" name="amount" id="amount_C" readonly />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="Address">Address</label>
+                    </td>
+                    <td colspan="3">
+                        <input type="text" name="address1" id="address1_C" readonly />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="City">City</label>
+                    </td>
+                    <td>
+                        <input type="text" name="city" id="city_C" readonly />
+                    </td>
+                    <td>
+                        <label for="state">State</label>
+                    </td>
+                    <td>
+                        <input type="text" name="state" id="state_C" readonly />
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="zipcode">Zipcode</label></td>
+                    <td>
+                        <input type="text" name="zipcode" id="zipcode_C" readonly />
+                    </td>
+                    <td>
+                        <label for="country">Country</label>
+                    </td>
+                    <td>
+                        <input type="text" name="country" id="country_C" readonly />
+                    </td>
+                </tr>
+            </table>
+
+            <input type="submit" value="Donate" />
+        </form>
+    </section>
+</body>
+
+<script type="text/javascript">
+    function sendDetails() {
+        //Link for sending details of transactions for hash calculation
+        let link = "/initiate";
+
+        let data = {
+            firstname: document.getElementById("firstname").value,
+            lastname: document.getElementById("lastname").value,
+            email: document.getElementById("email").value,
+            phone: document.getElementById("phone").value,
+            amount: document.getElementById("amount").value,
+            address1: document.getElementById("address1").value,
+            city: document.getElementById("city").value,
+            state: document.getElementById("state").value,
+            zipcode: document.getElementById("zipcode").value,
+            country: document.getElementById("country").value,
+        };
+
+
+        for (let i in data) {
+            if (data[i].length === 0) {
+                window.alert("Please fill all details");
+                return;
+            }
+        }
+
+
+        //Sending request via AJAX
+        //creating AJAX object
+        xhr = new XMLHttpRequest();
+
+        xhr.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                let resp;
+                console.log(this.responseText);
+                try {
+                    resp = JSON.parse(this.responseText);
+                }
+                catch {
+                    resp = this.responseText;
+                    window.alert(resp);
+                    return;
+                }
+
+
+                document.getElementById("loading_circle").style.display = "none";
+                document.getElementById("confirm-details").style.display = "block";
+                setValues(resp);
+            }
+
+            if ((this.readyState == 1) | (this.readyState == 2)) {
+                //add loading circle
+                console.log("loading");
+                document.getElementById("user-details").style.display = "none";
+                document.getElementById("loading_circle").style.display = "block";
+
+            }
+        };
+
+        xhr.open("POST", link, true);
+        xhr.setRequestHeader("Content-Type", "application/json");
+        xhr.send(JSON.stringify(data));
+    }
+
+    function setValues(resData) {
+        for (let i in resData) {
+            document.getElementById(String(i + "_C")).value = resData[i];
+        }
+    }
+
+    function enable_edit() {
+        document.getElementById("confirm-details").style.display = "none";
+        document.getElementById("user-details").style.display = "block";
+    }
+</script>
+
+</html>
