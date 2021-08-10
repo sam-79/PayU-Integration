@@ -10,9 +10,8 @@ from decouple import config
 import os
 import sqlite3 as sql
 
-import smtplib
-from email.mime.text import MIMEText
-from email.mime.multipart import MIMEMultipart
+from sendgrid import SendGridAPIClient
+from sendgrid.helpers.mail import Mail
 
 app = Flask(__name__)
 app.debug = True
@@ -48,7 +47,7 @@ def donate_page():
 
 @app.route('/infoForm.html')
 def get_details():
-    print(render_template('infoForm.html'))
+    
     return render_template('infoForm.html')
 
 
@@ -174,10 +173,7 @@ def failure():
     return render_template('failure_Trans.html', status=data['status'], txnid=data['txnid'], amount=data['amount'], mihpayid=data['mihpayid'])
 
 
-
-
-
-
+#generate transaction ID
 def generate_txnid():
     # for generating txnid
     seq = string.ascii_letters+string.digits
@@ -283,28 +279,23 @@ def invoice_gen(firstname, lastname, email, address1, state, country, amount, da
         status=status,
         txnid=txnid
     )
-    print('rec',email)
     
     sendmail(html_temp, receiver = email)
 
 
 def sendmail(html:str, receiver:str):
-    sender = 'ghostpy001@gmail.com'
-
-    msg = MIMEMultipart('alternative')
-    msg['Subject'] = "Payment Invoice"
-    msg['From'] = sender
-    msg['To'] = receiver
-
-    msg.attach(MIMEText(html, 'html'))
-
+    message = Mail(
+        from_email=gmail_user,
+        to_emails=receiver,
+        subject='Payment Invoice',
+        html_content=html
+        )
     try:
-        s = smtplib.SMTP_SSL(host='smtp.gmail.com', port=465)
-        s.login(user=gmail_user, password=gmail_pass)
-        s.sendmail(sender, receiver, msg.as_string())
-        s.quit()
-    except Exception as exp:
-        print('Error',exp)
+        sg = SendGridAPIClient(os.getenv('sendmail_key',config('sendmail_key')))
+        response = sg.send(message)
+
+    except Exception as e:
+        print(e.message)
 
 
 # Start point of program
