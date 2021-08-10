@@ -84,10 +84,10 @@ def initiate():
     country = data['country']
 
     # Redirect link for successful Payment
-    surl = 'http://127.0.0.1:5000/success'
+    surl = 'https://pay-gate1.herokuapp.com/success'
 
     # Redirect link for Failure Payment
-    furl = 'http://127.0.0.1:5000/failure'
+    furl = 'https://pay-gate1.herokuapp.com/failure'
 
     # service_provider
     service_provider = 'payu_paisa'
