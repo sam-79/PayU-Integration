@@ -5,10 +5,11 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Checkout Form</title>
 
     <link rel="stylesheet" type="text/css" href="{{url_for('static',filename = 'css/style.css')}}" media="all" />
-    
+
+
 </head>
 
 <body>
@@ -97,9 +98,9 @@
         <button onclick="sendDetails();" class="submit-btn">Submit</button>
     </section>
 
-    <!-- Loading image -->
-    <img src="loading.gif" alt="loading" id="loading_circle" style="display: none;">
-
+    <!-- Loading animation -->
+    <div class="loader" id="loading_circle" style="display: none;">
+    </div>
 
     <!-- HTML form for PayU API call -->
     <section id="confirm-details" style="display: none;    background-image: linear-gradient( 

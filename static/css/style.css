@@ -68,30 +68,10 @@ input[type="number"] {
   cursor: pointer;
 }
 
-.submit-btn {
-  display: block;
-  font-size: xx-large;
-  height: fit-content;
-  width: 40%;
-  padding: 10px;
-  margin: auto;
-  background-color: #bcc7c1;
-  border-radius: 50px;
-  border: 2px solid rgb(5, 78, 114);
-  transition: 0.5s;
-  cursor: pointer;
-}
-
-.submit-btn:hover {
-  width: 50%;
-  letter-spacing: 1px;
-  transition: 0.5s;
-  background-color: #808281;
-  color: #ffffffd9;
-}
-
 .home-btn,
-.donate-btn {
+.donate-btn,
+.submit-btn,
+input[type="submit"] {
   display: block;
   font-size: x-large;
   height: fit-content;
@@ -105,35 +85,14 @@ input[type="number"] {
   cursor: pointer;
 }
 .home-btn:hover,
-.donate-btn:hover {
+.donate-btn:hover,
+.submit-btn:hover,
+input[type="submit"]:hover {
   width: 20%;
   letter-spacing: 1px;
   transition: 0.5s;
   background-color: #7a44f1;
   color: #ffffff;
-}
-
-input[type="submit"] {
-  display: block;
-  font-size: xx-large;
-  height: fit-content;
-  width: 130px;
-  padding: 10px;
-  margin-left: auto;
-  margin-right: 0;
-  background-color: #c5baf5;
-  border-radius: 30px;
-  border: 2px solid rgb(5, 78, 114);
-  transition: 0.5s;
-  cursor: pointer;
-}
-
-input[type="submit"]:hover {
-  width: 200px;
-  transition: 0.5s;
-  background-color: #1d5792;
-  color: #ffffffd9;
-  border: solid 1px white;
 }
 
 .edit-btn {
@@ -144,4 +103,27 @@ input[type="submit"]:hover {
   background-color: #ffffffa3;
   border: solid 1px black;
   font-size: medium;
+}
+
+.loader {
+  border: 10px solid #934cd4;
+  border-top: 10px solid #ffffff;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  margin: auto;
+  right: 50%;
+  bottom: 50%;
+  transform: translate(50%, 50%);
+  position: absolute;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
